@@ -14,14 +14,18 @@ var FoodChain = function() {
 
 FoodChain.prototype.verse = function(input) {
   var animal = this.animals[input]
-  
+
   if (input == 1) {
     return this.firstVerse + animal + '.\n' + this.lastVerse;
   } else if (input < 8 && input > 1) {
-    return this.firstVerse + animal + '.\n' + this.secondVerse[animal] + 'She swallowed the spider to catch the fly.\n' + this.lastVerse;
+    return this.firstVerse + animal + '.\n' + this.secondVerse[animal] + this.swallow(input) + this.lastVerse;
   }
-    //create function with loop based on placement of animal in array
-    // 'She swallowed the ${animal} to catch the ${animal2}
+}
+
+FoodChain.prototype.swallow = function(input) {
+    for(var i = input; i > 0; i--){
+      return `She swallowed the ${this.animals[i]} to catch the ${this.animals[i - 1]}.\n`
+    }
 }
 
 module.exports = FoodChain;
