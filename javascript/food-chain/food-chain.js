@@ -9,7 +9,7 @@ var FoodChain = function() {
     'goat': 'Just opened her throat and swallowed a goat!\n',
     'cow': 'I don\'t know how she swallowed a cow!\n',
   }
-  this.lastVerse = 'I don\'t know why she swallowed the fly. Perhaps she\'ll die.\n'
+  this.lastVerse = 'I don\'t know why she swallowed the fly. Perhaps she\'ll die.\n';
 }
 
 FoodChain.prototype.verse = function(input) {
@@ -23,9 +23,16 @@ FoodChain.prototype.verse = function(input) {
 }
 
 FoodChain.prototype.swallow = function(input) {
-    for(var i = input; i > 0; i--){
-      return `She swallowed the ${this.animals[i]} to catch the ${this.animals[i - 1]}.\n`
+  var allLines = []
+
+    for (var i = input; i > 1; i--) {
+      if(i === 3) {
+        allLines.push('She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n')
+      } else {
+        allLines.push(`She swallowed the ${this.animals[i]} to catch the ${this.animals[i - 1]}.\n`)
+      }
     }
+  return allLines.join('')
 }
 
 module.exports = FoodChain;
