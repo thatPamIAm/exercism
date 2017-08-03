@@ -19,20 +19,33 @@ FoodChain.prototype.verse = function(input) {
     return this.firstVerse + animal + '.\n' + this.lastVerse;
   } else if (input < 8 && input > 1) {
     return this.firstVerse + animal + '.\n' + this.secondVerse[animal] + this.swallow(input) + this.lastVerse;
+  } else if (input == 8) {
+    return 'I know an old lady who swallowed a horse.\n' + 'She\'s dead, of course!\n';
   }
 }
 
-FoodChain.prototype.swallow = function(input) {
-  var allLines = []
+FoodChain.prototype.verses = function(first, last) {
+  var verses = '';
 
-    for (var i = input; i > 1; i--) {
+    for(var i = first; i < last + 1; i++) {
+      verses += this.verse(i) + '\n';
+    }
+
+  return verses
+}
+
+FoodChain.prototype.swallow = function(input) {
+  var verses = '';
+
+    for(var i = input; i > 1; i--) {
       if(i === 3) {
-        allLines.push('She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n')
+        verses += 'She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n'
       } else {
-        allLines.push(`She swallowed the ${this.animals[i]} to catch the ${this.animals[i - 1]}.\n`)
+        verses += `She swallowed the ${this.animals[i]} to catch the ${this.animals[i - 1]}.\n`
       }
     }
-  return allLines.join('')
+    
+  return verses
 }
 
 module.exports = FoodChain;
