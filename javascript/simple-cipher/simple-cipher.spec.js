@@ -32,13 +32,13 @@ describe('Incorrect key cipher', function () {
     }).toThrow(new Error('Bad key'));
   });
 
-  xit('throws an error with a numeric key', function () {
+  it('throws an error with a numeric key', function () {
     expect( function () {
       new Cipher('12345');
     }).toThrow(new Error('Bad key'));
   });
 
-  xit('throws an error with an empty key', function () {
+  it('throws an error with an empty key', function () {
     expect( function () {
       new Cipher('');
     }).toThrow(new Error('Bad key'));
