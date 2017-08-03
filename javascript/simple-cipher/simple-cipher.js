@@ -1,6 +1,15 @@
-var Cipher = function() {
-  this.key = 'abcdefghij',
+var Cipher = function(key) {
+  this.key = noCaps(key) || 'abcdefghij',
   this.reverseKey = ''
+}
+
+function noCaps(key) {
+  var pat = /^[a-z]+$/;
+  if (pat.test(key)) {
+    return key;
+  } else {
+    throw Error('Bad key');
+  }
 }
 
 Cipher.prototype.encode = function(string) {

@@ -1,6 +1,6 @@
 var FoodChain = function() {
   this.animals = ['nothing', 'fly', 'spider', 'bird', 'cat', 'dog', 'goat', 'cow', 'horse'],
-  this.firstVerse = 'I know an old lady who swallowed a '
+  this.firstVerse = 'I know an old lady who swallowed a ',
   this.secondVerse = {
     'spider': 'It wriggled and jiggled and tickled inside her.\n',
     'bird': 'How absurd to swallow a bird!\n',
@@ -8,7 +8,7 @@ var FoodChain = function() {
     'dog': 'What a hog, to swallow a dog!\n',
     'goat': 'Just opened her throat and swallowed a goat!\n',
     'cow': 'I don\'t know how she swallowed a cow!\n',
-  }
+  },
   this.lastVerse = 'I don\'t know why she swallowed the fly. Perhaps she\'ll die.\n';
 }
 
@@ -44,7 +44,7 @@ FoodChain.prototype.swallow = function(input) {
         verses += `She swallowed the ${this.animals[i]} to catch the ${this.animals[i - 1]}.\n`
       }
     }
-    
+
   return verses
 }
 
